@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/frontend/css/post.css">
+	<link rel="stylesheet" href="/frontend/css/all.min.css">
+	<title>Post page</title>
+</head>
+<body>
+	<!--navebar-->
+	<header >
+		<a href="#"class="logo"><i class="fa-solid fa-laptop-code logo_icon"></i><span>grit:forum</span></a>
+		<div class="search_bar">
+			<form action="">
+				<input type="text" placeholder="Search.." name="search" ><button class="search_button" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+			</form>
+		</div>
+	
+		<div class="main">
+            <div class="user_link" style="padding-right: 40px;"><a href=""><i class="fa-solid fa-circle-user" style="display: inline;"></i><span>{{.username}}</span></a></div>
+			<div class="menu" id="menu-icon"><i class="fa-solid fa-bars"></i></div>
+		</div>
+	</header>
+	
+		<!--postbox-->
+    <div class="container">
+        <div class="write-post-container">
+            <form action="" method="post">
+                <div class="user-profile">
+                    <i class="fa-regular fa-circle-user"></i><span>{{.username}}</span>
+                </div>
+                <div class="post-input-container">
+                    <label for="title">Title</label>
+                    <input type="text"class="title" id="title">
+                    <label for="topic">Topic</label>
+                    <input type="text"class="topic" id="topic">
+                    <label for="Text">Text</label>
+                    <textarea name="" id="Text" cols="30" rows="5"class="user_input"></textarea>
+                    <button class="custom-btn btn-5"><span>Post</span></button>
+                </div> 
+            </form>
+            </div>
+	</div>
+</div>
+
+
+	<script src="/frontend/js/post.js"></script>
+	
+</body>
+</html>

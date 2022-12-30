@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="/frontend/css/registerPage.css" />
+    <link rel="stylesheet" href="/frontend/css/all.min.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Register Page</title>
+  </head>
+  <body>
+    {{ range $key, $value := . }}
+    {{ if eq $key 0 }}
+    <section class="vh-100 gradient-custom">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card bg-dark text-white" style="border-radius: 1rem">
+              <div class="card-body p-5 div5">
+                <div class="mb-md-5 mt-md-4 pb-5 warp_div">
+                  <p style="color:red;">{{$value}}</p>
+                  <h2 class="fw-bold mb-2 text-uppercase">Register</h2>
+                  <p class="text-white-50 mb-5">
+                    	<!--Welcome message-->
+                    Welcome To <i class="fa-solid fa-laptop-code logo_icon" style="color: rgb(0, 132, 255);"></i><span style="color:rgb(0, 217, 255);"> grit:forum</span> community
+                  </p>
+                  {{ else  if eq $key 1 }}
+                  <form id="form1" action="" method="POST">
+                    
+                    <!--Username Input-->
+                    <div class="form-outline form-white mb-4 input-box">
+                      <input
+                        name="username"
+                        type="text"
+                        id="username"
+                        value="{{ $value }}"
+                        maxlength="24" 
+                        required
+                      />
+                      <label class="form-label" for="username">Username</label>
+                    </div>
+                    {{ else if eq $key 2 }}
+                    
+                    <!--Email input-->
+                    <div class="form-outline form-white mb-4 input-box">
+                        <input 
+                        type='text'
+                        name='email' 
+                        id="email"
+                        value="{{ $value }}" 
+                        onkeyup="validateEmail(email)"
+                        required
+                        />
+                        <label class="form-label" for="email">Email</label>
+                    </div>
+                    <!-- Password InPut-->
+                    <div class="form-outline form-white mb-4 input-box">
+                      <input
+                        name="user_password"
+                        type="password"
+                        id="user_password"
+                        onkeyup="passConfirm();"
+                        required
+                      />
+                      <label class="form-label" for="password">Password</label>
+                    </div>
+                    <!--Confirm Password InPut-->
+                    <div class="form-outline form-white mb-4 input-box">
+                      <input
+                        name="confirm_password"
+                        type="password"
+                        id="confirm_password"
+                        onkeyup="passConfirm();"
+                        required
+                        disabled
+                      />
+                      <label class="form-label" for="confirm password"
+                        >Confirm password</label
+                      >
+                      <i class="fas fa-eye-slash show"></i>
+                    </div>
+                    <!--Alert message-->
+                    
+                    {{ else }}
+                    {{ end }}
+                    {{ end }}
+                    <div class="alert" >
+                        <ul>
+                      
+                            <li>
+                                <i id="alertU" class="fas fa-exclamation-circle alertUIcon"></i>
+                                <span class="alert_Username"
+                                  >Username : enter  8 - 24 characters
+                                </span>
+                            </li>
+                            <li>
+                                <i id="alertE" class="fas fa-exclamation-circle alertEmailIcon"></i>
+                                <span class="alert_Email"
+                                  >Email : example@fake-email.io
+                                </span>
+                            </li>
+                            <li>
+                                <i id="alertPass" class="fas fa-exclamation-circle alertPassIcon"></i>
+                                <span class="alert_Password"
+                                  >Password : enter at least 8 characters
+                                </span>
+                            </li>
+                        </ul>
+                      
+                    </div>
+
+                    <!--Sing UP button-->
+                    <button
+                      class="btn btn-outline-light btn-lg px-5"
+                      id="submitButton"
+                      type="submit"
+                      class="btn btn-outline-light btn-lg px-5"
+                      value="submit"
+                      required
+                      disabled
+                    >
+                      Sign Up
+                    </button>
+                  </form>
+                </div>
+                <!--link to Register page-->
+                <div>
+                  <p class="mb-0">
+                    Already have an Account?
+                    <a href="./login" class="text-white-50 fw-bold">Log in</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="/frontend/js/registerScript.js"></script>
+    </section>
+ 
+  </body>
+</html>

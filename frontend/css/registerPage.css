@@ -1,0 +1,182 @@
+li{
+  list-style: none;
+}
+.div5{
+  text-align: center;
+}
+.warp_div .input-box{
+    position: relative;
+      height: 50px;
+      margin: 25px 0;
+  }
+  
+  .input-box input{
+    height: 100%;
+    width: 100%;
+    color: white;
+    background: rgb(33,37,41);
+    border-radius: 10px;
+    padding: 0 40px 0 15px;
+    border: 2px solid #a6a6a6;
+    transition: all 0.3s ease;
+    
+  }
+  
+ 
+  
+  
+  .input-box label{
+    left: 15px;
+    width: 90%;
+    background: rgb(33,37,41);
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+    pointer-events: none;
+    pointer-events:none;
+    transition: all 0.3s ease;
+  }
+  
+  
+  .input-box input:focus ~ label,
+  .input-box input:valid ~ label{
+    width: auto;
+    left: 15px;
+      top:-4px;
+      color: white;
+      font-size: 15px;
+      padding: 3px;
+      margin-bottom: 0;
+      border-radius: 5px;
+    background: rgb(33,37,41);
+  
+  }
+  
+  .input-box label,
+  .input-box i{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .input-box i{
+    right: 15px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+  .alert{
+    display: flex;
+    text-align: left;
+
+    margin-top: -13px;  
+}
+
+.alert .alertUIcon,
+.alert .alertEmailIcon,
+.alert .alertPassIcon{
+    margin-right: 8px;
+    color: red;
+    display: none;
+}
+.alert .text{
+    color: #a6a6a6;
+    font-size: 18px;
+    
+}
+
+
+
+  
+  /*Under here is for moving background*/
+  
+  body {
+    -webkit-animation: theme 21s linear infinite;
+            animation: theme 21s linear infinite;
+  }
+  body:after, body:before {
+    content: "";
+    display: block;
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    width: 100vmax;
+    height: 100vmax;
+    background: rgba(0, 0, 0, 0.05);
+    -webkit-animation: background 90s linear infinite;
+            animation: background 90s linear infinite;
+  }
+  body:after {
+    left: 15vw;
+  }
+  body:before {
+    right: 15vw;
+    -webkit-animation-delay: -30s;
+            animation-delay: -30s;
+    animation-direction: reverse;
+  }
+  
+  @-webkit-keyframes theme {
+      0% {
+          background: #151515;
+        }
+        16% {
+          background: #222323;
+        }
+        33% {
+          background: #4a4a4a;
+        }
+        50% {
+          background: #424242;
+        }
+        66% {
+          background: #353434;
+        }
+        83% {
+          background: #292828;
+        }
+        100% {
+          background: #151515;
+        }
+  }
+  
+  @keyframes theme {
+      0% {
+          background: #151515;
+        }
+        16% {
+          background: #222323;
+        }
+        33% {
+          background: #4a4a4a;
+        }
+        50% {
+          background: #424242;
+        }
+        66% {
+          background: #353434;
+        }
+        83% {
+          background: #292828;
+        }
+        100% {
+          background: #151515;
+        }
+  }
+  @-webkit-keyframes background {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes background {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }/*# sourceMappingURL=loginPage.css.map */
