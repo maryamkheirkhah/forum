@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,136 +9,123 @@
 	<link rel="stylesheet" href="/frontend/css/all.min.css">
 	<title>grit:forum</title>
 </head>
+
 <body>
-	<!--navebar-->
-	<header >
-		<a href="#"class="logo"><i class="fa-solid fa-laptop-code logo_icon"></i><span>grit:forum</span></a>
-		<div class="search_bar">
-			<form action="">
-				<input type="text" placeholder="Search.." name="search" ><button class="search_button" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-			</form>
+	 <!-- Reset post Method -->
+	 <script>
+		if ( window.history.replaceState ) {
+			window.history.replaceState( null, null, window.location.href );
+		}
+	</script>
+	<!--navebar -->
+	<header>
+		<a href="/main" class="logo"><i class="fa-solid fa-laptop-code logo_icon"></i><span>grit:forum</span></a>
+
+		<div class="main" id="USER">
+			<div class="user_link" style="padding-right: 40px;"><a href="/profile?Username={{.Username}}"><i class="fa-solid fa-circle-user"
+						style="display: inline;"></i><span id="UserName">{{.Username}}</span></a></div>
+						<form action="" method="POST">
+							<div class="user_link" style="padding-right: 40px;">
+							 <button class="logout_button" name="Logout" value="Logout" type="submit">
+							   <i class="fa-solid fa-arrow-right-to-bracket" style="display: inline;"></i>
+						   <span>Logout</span>
+						 </button>
+					   </div>
+					 </form> 
+			<div class="menu" id="menu-icon"><i class="fa-solid fa-bars"></i></div>
 		</div>
-
-
-		<!--After user login in to page this div will switch to user thing-->
-		<div class="main">
-			<!-- Guest -->
-			<div class="guest_in">
-				<a href="#" class="user"><i class="fa-solid fa-user"></i><span>Login</span></a>
-				<a href="#">Register</a>
-				<div class="menu" id="menu-icon"><i class="fa-solid fa-bars"></i></div>
+		<div class="main" id="GUEST">
+			<div id:="guest" class="user_link" style="padding-right: 40px;">
+				<a href="/login" class="user"><i class="fa-solid fa-user"></i><span>Login</span></a>
+				<a href="/register"><span>Register</span></a>
 			</div>
-			<!--User-->
-			<div class="user_in">
-				<div class="user_link" style="padding-right: 40px;"><a href=""><i class="fa-solid fa-circle-user" style="display: inline;"></i><span>{{.username}}</span></a></div>
-				<div class="menu" id="menu-icon"><i class="fa-solid fa-bars"></i></div>
-			</div>
-			
-		</div>	
-			<div class="main"></div>
+		</div>
 	</header>
-
 	<div class="content">
 
-	<!--Post box-->
+		<!--Post box-->
 		<div class="snippet">
-			<div class="all_topic">
+		<!-- 	<div class="all_topic">
 				<h1>All topic</h1>
 				<h4>Welcome message</h4>
-			</div>
-			{{.range}}
+			</div> -->
+			<!-- Start Post Loop -->
+			{{range .Posts}}
 			<div class="topic_box">
 				<div class="left_box">
 					<div class="like">
-						<span class="numb">0</span>
-						<span class="like">like</span></div>
-					<div class="unlike">
-						<span class="numb">0</span>
-						<span class="unlike">unlike</span></div>
-					<div class="comments">
-						<span class="numb">0</span>
-						<span class="comments">comments</span></div>
+						<span class="numb">{{.Likes}}</span>
+						<span class="like">like</span>
 					</div>
+					<div class="unlike">
+						<span class="numb">{{.Dislikes}}</span>
+						<span class="unlike">dislike</span>
+					</div>
+					<div class="comments">
+						<span class="numb">{{.TotalComments}}</span>
+						<span class="comments">comments</span>
+					</div>
+				</div>
 				<div class="main_box">
-					<h3><a href="" class="post_link">{{.Post}}</a></h3>
-					<div class="post_text">ladksfjlsakdjfasd <br>
-						<br><br><br>asdf</div>
+					<h3><a href="/content?postId={{.PostId}}" class="post_link">{{.Title}}</a></h3>
+					<div class="post_text">{{.Content}}
+					</div>
 					<div class="inform_box">
 						<div class="post_topic">
 							<ul class="topic_list">
-								<li><a href="#">spot</a></li>
-
+								{{range .Topics}}
+								<li><a href="/main?TopicName={{.}}">{{.}}</a></li>
+								{{end}}
 							</ul>
 						</div>
-						<div class="post_maker"><span>{{.maker_name}} {{.post_make_time}}</span></div>
+						<div class="post_maker"><span><a href="/profile?Username={{.Username}}">{{.Username}}</a> {{.CreationTime}}</span></div>
 					</div>
 
-					</div>
 				</div>
-				<!--copy-->
-				<div class="topic_box">
-					<div class="left_box">
-						<div class="like">
-							<span class="numb">0</span>
-							<span class="like">like</span></div>
-						<div class="unlike">
-							<span class="numb">0</span>
-							<span class="unlike">unlike</span></div>
-						<div class="comments">
-							<span class="numb">0</span>
-							<span class="comments">comments</span></div>
-						</div>
-					<div class="main_box">
-						<h3><a href="" class="post_link">{{.Post}}</a></h3>
-						<div class="post_text">ladksfjlsakdjfasd <br>
-							<br><br><br>asdf</div>
-						<div class="inform_box">
-							<div class="post_topic">
-								<ul class="topic_list">
-									<li><a href="#">spot</a></li>
-	
-								</ul>
-							</div>
-							<div class="post_maker"><span>{{.maker_name}} {{.post_make_time}}</span></div>
-						</div>
-	
-						</div>
-					</div>
-				<!--copy-->
-				{{.end}}
+			</div>
+			{{end}}
+			<!-- End Post Loop -->
 		</div>
-			<!--right side div-->
-	<div class="right_side">
-		<div class="side_bar">
-			<ol class="nav_link">
-			<li class="home_link">
-				<a href="#">
-					<div class="text_box">
-						<div>Home</div>
-					</div>
-				</a>
-			</li>
-			<li>
+		<!--right side div-->
+		<div class="right_side">
+			<div class="side_bar">
 				<ol class="nav_link">
-					<li class="head_line"><span>Top topic</span> </li>
-					{{.range}}
-					<li class="topic_list"> <a href="#" class="">
-						<span>some topic</span>
-					</a></li>
-				
-					{{.end}}
+					<li class="home_link">
+						<a href="/main">
+							<div class="text_box">
+								<div>Home</div>
+							</div>
+						</a>
+					</li>
+					<li class="post_link" id="post_link">
+						<a href="/post">
+							<div class="text_box">
+								<div>Post</div>
+							</div>
+						</a>
+					</li>
+					<li>
+						<ol class="nav_link">
+							<li class="head_line"><span>All Topics</span> </li>
+							<!-- Start Loop Topics -->
+							{{range .Topics}}
+							<li class="topic_list"> <a href="/main?TopicName={{.}}" class="">
+									<span>{{.}}</span>
+								</a></li>
+							{{end}}
+							<!-- End Loop Topics -->
+						</ol>
+					</li>
 				</ol>
-			</li>
-			</ol>
-		</div>
-</div>
-				
 			</div>
 		</div>
+
 	</div>
-
-
 	<script src="/frontend/js/mainPage.js"></script>
-	
+	<script type="module">
+		import {checkUser,alertMessage} from '/frontend/js/modulfile.js'
+		alertMessage({{.CookieMessage}})
+		checkUser()
+	</script>
 </body>
 </html>

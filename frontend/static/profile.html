@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/frontend/css/profilePage.css">
+    <link rel="stylesheet" href="/frontend/css/all.min.css">
+    <title>Profile</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+</head>
+
+<body style="font-family: 'Times New Roman', Times, serif;">
+     <!-- Reset post Method -->
+  <script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+</script>
+    <!--navebar-->
+    <header style="display: flex;">
+        <a href="/main" class="logo"><i class="fa-solid fa-laptop-code logo_icon"></i><span>grit:forum</span></a>
+     	<div class="main" id="USER">
+			<div class="user_link" style="padding-right: 40px;"><a href="/profile?Username={{.ActiveUsername}}"><i class="fa-solid fa-circle-user"
+						style="display: inline;"></i><span id="UserName">{{.ActiveUsername}}</span></a></div>
+						<form action="" method="POST">
+							<div class="user_link" style="padding-right: 40px;">
+							 <button class="logout_button" name="Logout" value="Logout" type="submit">
+							   <i class="fa-solid fa-arrow-right-to-bracket" style="display: inline;"></i>
+						   <span>Logout</span>
+						 </button>
+					   </div>
+					 </form> 
+		</div>
+		<div class="main" id="GUEST">
+			<div id:="guest" class="user_link" style="padding-right: 40px;">
+				<a href="/login" class="user"><i class="fa-solid fa-user"></i><span>Login</span></a>
+				<a href="/register"><span>Register</span></a>
+			</div>
+		</div>
+        
+    </header>
+
+    <div class="container emp-profile">
+        <form method="post">
+            <!-- Top div -->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="profile-img">
+                        <img src="/frontend/Picture/download.jpeg" style=" max-height: 150px; max-width: 245px;"
+                            alt="" />
+                        <!-- 
+                                // for edit user photo 
+                                <div class="file btn btn-lg btn-primary">
+                                    Change Photo
+                                    <input type="file" name="file" />
+                                </div>
+                            -->
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="profile-head">
+                        <!-- UserName -->
+                        <h5 >
+                           {{.UserInfo.Username}}
+                        </h5>
+                        <!-- User ranking // like admin or user -->
+                        <p class="proile-rating">ROLE : <span id="UserRole">{{.UserInfo.UserRank}}</span></p>
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                                    aria-controls="home" aria-selected="true">About</a>
+                            </li>
+                            <!--   <li class="nav-item">
+                                <a class="nav-link" id="Timeline-tab" data-toggle="tab" href="#Timeline" role="tab"
+                                    aria-controls="Timeline" aria-selected="false">Timeline</a>
+                            </li> -->
+                            <li class="nav-item">
+                                <a class="nav-link" id="Like-tab" data-toggle="tab" href="#Like" role="tab"
+                                    aria-controls="Like" aria-selected="false">Like</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="Unlike-tab" data-toggle="tab" href="#Unlike" role="tab"
+                                    aria-controls="Unlike" aria-selected="false">Dislike</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="Created_Post-tab" data-toggle="tab" href="#Created_Post"
+                                    role="tab" aria-controls="Creadted_Post" aria-selected="false">Created post</a>
+                            </li>
+                            <!--
+
+                                <li class="nav-item">
+                                    <a class="nav-link" id="Edit_Profile-tab" data-toggle="tab" href="#Edit_Profile"
+                                    role="tab" aria-controls="Edit_Profile" aria-selected="false">Edit Profile</a>
+                                </li>
+                            -->
+                        </ul>
+                    </div>
+                </div>
+
+                <!--// this is Edit button for later -->
+
+            </div>
+            <!-- Bottom div-->
+            <div class="row">
+                <!-- left side box-->
+                <div class="col-md-4">
+                    <div class="profile-work">
+                        <!-- Emty div for space and if want add some <a> tage -->
+                    </div>
+                </div>
+                <!-- right side box -->
+                <div class="col-md-8">
+                    <div class="tab-content profile-tab" id="myTabContent">
+
+                        <!--Profile div -->
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="row">
+                                <!-- Username-->
+                                <div class="col-md-6">
+                                    <label>Username</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p id="UserInfoName">{{.UserInfo.Username}}</p>
+                                </div>
+                            </div>
+                            <!--user email -->
+                            <div class="row" id="UserEmailInfo">
+                                <div class="col-md-6">
+                                    <label>Email</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{.UserInfo.UserEmail}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End Profile div -->
+                        <!--Timeline -->
+                        <div class="tab-pane fade" id="Timeline" role="tabpanel" aria-labelledby="Timeline-tab">
+                            <!-- timeline Div for timeline Use golang template to range loop  post -->
+                            <div class="row">
+                                <div class="col-md-6">
+                                   <!-- Timeline -->
+                                </div>
+                            </div>
+                        </div>
+                        <!--End Timeline-->
+                        <!--Like -->
+                        <div class="tab-pane fade" id="Like" role="tabpanel" aria-labelledby="Like-tab">
+                            <!-- like Div for time like post golang template to range loop post -->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    {{range .LikedPosts}}
+                                    <p style="color:rgb(0, 217, 255);">{{.CreationTime}}<a href="/content?postId={{.Id}}"> {{.Title}}</a> <text style="color: white;" >{{.Message}}</text></p>
+                                    {{end}}
+                                </div>
+                            </div>
+                            <!-- End loop-->
+                        </div>
+
+                        <!--End like-->
+                        <!--Unlike -->
+                        <div class="tab-pane fade" id="Unlike" role="tabpanel" aria-labelledby="Unlike-tab">
+                            <!-- Unlike Div for time like post golang template to range loop post -->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    {{range .DislikedPosts}}
+                                    <p style="color:rgb(0, 217, 255);">{{.CreationTime}}<a href="/content?postId={{.Id}}"> {{.Title}}</a> <text style="color: white;" >{{.Message}}</text></p>                                    {{end}}
+                                </div>
+                            </div>
+                            <!-- End loop-->
+                        </div>
+                        <!--End unlike-->
+                        <!--Created Post -->
+                        <div class="tab-pane fade" id="Created_Post" role="tabpanel" aria-labelledby="Created_Post-tab">
+                            <!-- Unlike Div for time like post golang template to range loop post -->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    {{range .CreatedPosts}}
+                                    <p style="color:rgb(0, 217, 255);">{{.CreationTime}} <text style="color: white;" ></text><a href="/content?postId={{.Id}}"> {{.Title}}</a></p>
+                                    {{end}}
+                                </div>
+                            </div>
+                            <!-- End loop-->
+                        </div>
+                        <!--End Created post-->
+                        <!--
+
+                      
+                        --Edit Profile  --
+                        <div class="tab-pane fade" id="Edit_Profile" role="tabpanel" aria-labelledby="Edit_Profile-tab">
+                            -- Unlike Div for time like post golang template to range loop post --
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <form action="">
+                                        <div class="form_input">
+                                            <label for=""> username</label>
+                                  
+
+                                                <input type="text">
+                                           
+                                        </div>
+                                        <div class="form_input">
+                                            <label for="">new password</label>
+                                            <input type="text">
+                                        </div>
+                                        <div class="form_input">
+                                            <label for="">confrim password</label>
+                                            <input type="text">
+                                        </div>
+                                        <div class="form_input">
+                                            <label for="">email</label>
+                                            <input type="text">
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                            -- End loop--
+                        </div>
+                        --End Edit Profile  --
+                    -->
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+   
+    <script type="module">
+		import {alertMessage, checkUser3 } from '/frontend/js/modulfile.js'
+        checkUser3()
+		alertMessage({{.CookieMessage}})
+        import {checkUserEmail} from '/frontend/js/profile.js'
+        checkUserEmail()
+	  </script>
+</body>
+
+</html>

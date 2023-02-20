@@ -1,0 +1,123 @@
+:root{
+    --icon:rgb(0, 132, 255);
+    --text:#FFF;
+    --text_hover:rgb(0, 217, 255);
+    --select_div:rgb(0, 132, 255);
+    --post:rgba(0, 0, 0, 0.116);
+    --post_text:rgb(202, 202, 202);
+  }
+
+.errorBody{
+    margin: auto;
+    color: white;
+    text-align: center;
+    width: 50%;
+    font-size: 1.4rem;
+    background: #1515155d;
+    
+    padding: 10px;
+}
+.errorBody a{
+    color: var(--icon);
+    text-decoration:none;
+}
+.errorBody a:hover{
+    color: var(--text_hover)
+}
+ /*Under here is for moving background*/
+ body {
+    -webkit-animation: theme 1s linear infinite;
+            animation: theme 1s linear infinite;
+  }
+  body:after, body:before {
+    content: "";
+    display: block;
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    width: 100vmax;
+    height: 100vmax;
+    background: rgba(0, 0, 0, 0.05);
+    -webkit-animation: background 1s linear infinite;
+            animation: background 1s linear infinite;
+  }
+  body:after {
+    left: 15vw;
+  }
+  body:before {
+    right: 15vw;
+    -webkit-animation-delay: -4s;
+            animation-delay: -3s;
+    animation-direction: reverse;
+  }
+  :root{
+    --Color:linear-gradient(90deg, rgba(1,0,255,1) 0%, rgba(255,255,255,1) 50%, rgba(250,0,0,1) 100%)red;
+    --Color2:linear-gradient(90deg, rgba(1,0,255,1) 0%, rgba(255,0,0,1) 50%, rgba(255,255,255,1) 100%); 
+    --Color3:linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,0,0,1) 50%, rgba(1,0,255,1) 100%);
+    --Color4:linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(0,33,255,1) 50%, rgba(255,255,255,1) 100%);
+  }
+  @-webkit-keyframes theme {
+    0% {
+      background: var(--Color);
+    }
+    16% {
+      background: var(--Color2);
+    }
+    33% {
+      background:var(--Color3);
+    }
+    50% {
+      background: var(--Color4);
+    }
+    66% {
+      background: var(--Color3);
+    }
+    83% {
+      background:var(--Color2);
+    }
+    100% {
+      background: var(--Color);
+    }
+  }
+  
+  @keyframes theme {
+    0% {
+      background: var(--Color);
+    }
+    16% {
+      background: var(--Color2);
+    }
+    33% {
+      background:var(--Color3);
+    }
+    50% {
+      background: var(--Color4);
+    }
+    66% {
+      background: var(--Color3);
+    }
+    83% {
+      background:var(--Color2);
+    }
+    100% {
+      background: var(--Color);
+    }
+  }
+  @-webkit-keyframes background {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes background {
+    0% {
+      transform: rotate(360deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }/*# sourceMappingURL=loginPage.css.map */

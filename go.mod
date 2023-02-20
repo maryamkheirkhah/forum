@@ -1,8 +1,9 @@
 module forum
 
-go 1.19
+go 1.18
 
 require (
-	github.com/gofrs/uuid v4.3.1+incompatible // indirect
-	github.com/mattn/go-sqlite3 v1.14.16 // indirect
+	github.com/gofrs/uuid v4.3.1+incompatible
+	github.com/mattn/go-sqlite3 v1.14.16
+	golang.org/x/crypto v0.4.0
 )

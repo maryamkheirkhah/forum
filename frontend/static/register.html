@@ -15,6 +15,12 @@
     <title>Register Page</title>
   </head>
   <body>
+     <!-- Reset post Method -->
+  <script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+</script>
     {{ range $key, $value := . }}
     {{ if eq $key 0 }}
     <section class="vh-100 gradient-custom">
@@ -28,7 +34,7 @@
                   <h2 class="fw-bold mb-2 text-uppercase">Register</h2>
                   <p class="text-white-50 mb-5">
                     	<!--Welcome message-->
-                    Welcome To <i class="fa-solid fa-laptop-code logo_icon" style="color: rgb(0, 132, 255);"></i><span style="color:rgb(0, 217, 255);"> grit:forum</span> community
+                    Welcome To <i class="fa-solid fa-laptop-code logo_icon" style="color: rgb(0, 132, 255);"></i><span ><a href="/" style="color:rgb(0, 217, 255); text-decoration:none">grit:forum</a></span> community
                   </p>
                   {{ else  if eq $key 1 }}
                   <form id="form1" action="" method="POST">
@@ -41,6 +47,7 @@
                         id="username"
                         value="{{ $value }}"
                         maxlength="24" 
+                        style="outline: none;"
                         required
                       />
                       <label class="form-label" for="username">Username</label>
@@ -55,6 +62,7 @@
                         id="email"
                         value="{{ $value }}" 
                         onkeyup="validateEmail(email)"
+                        style="outline: none;"
                         required
                         />
                         <label class="form-label" for="email">Email</label>
@@ -66,6 +74,7 @@
                         type="password"
                         id="user_password"
                         onkeyup="passConfirm();"
+                        style="outline: none;"
                         required
                       />
                       <label class="form-label" for="password">Password</label>
@@ -77,6 +86,7 @@
                         type="password"
                         id="confirm_password"
                         onkeyup="passConfirm();"
+                        style="outline: none;"
                         required
                         disabled
                       />

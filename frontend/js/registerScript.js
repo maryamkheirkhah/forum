@@ -17,6 +17,7 @@ let checkEmail = false
 userName.addEventListener("input",()=>{
     let inputValue = userName.value.trim();// trim function
     if((inputValue.length < 8)){
+       
         checkUsername = false
         alertUsername.innerText = "Username enter at least 8 characters"
         alertUsername.style.color ="red"
@@ -25,7 +26,8 @@ userName.addEventListener("input",()=>{
         submitButton.setAttribute("disabled",true);
         document.getElementById("alertU").className ="fas fa-exclamation-circle alertUIcon"
        
-    }else if((inputValue.length >=8)==((/^[A-Za-z][A-Za-z0-9_]{8,24}$/.test(userName.value)))){
+    }else if((inputValue.length >7)==((/^[A-Za-z][A-Za-z0-9_]{7,24}$/.test(userName.value)))){
+      
         checkUsername = true
         alertUsername.innerText = "Username format correct"
         alertUsername.style.color ="green"
@@ -53,7 +55,7 @@ userName.addEventListener("input",()=>{
 })
 // js code to check #email format
 function validateEmail(emailId){
-var mailformat = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+var mailformat = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g;
 if(emailId.value.match(mailformat))
 {
     checkEmail = true
@@ -85,8 +87,13 @@ else
 
 //js code to check password and confirm password is same or not
 var passConfirm = function(){
+    
     if ((document.getElementById("user_password").value == 
-        document.getElementById("confirm_password").value)&&(document.getElementById("user_password").value.length!=0)&&(document.getElementById("user_password").value.length>=8)){
+        document.getElementById("confirm_password").value)&&(document.getElementById("user_password").value.length!=0)
+        &&(document.getElementById("user_password").value.length>=8)){
+
+            console.log("hi0")
+
         alertPass.innerText = "Password matched";
         alertPass.style.color = "green";
         alertPassIcon.style.color = "green";
@@ -104,25 +111,29 @@ var passConfirm = function(){
         alertPass.innerText = "Enter  8 - 24 characters";
         alertPass.style.color = "white";
         alertPassIcon.style.display = "none";
+        console.log("hi1")
         submitButton.setAttribute("disabled",true);
     }else{
+      
         checkConfirmPassword=false
         alertPass.innerText = "Password did not match";
         alertPass.style.color = "red";
         alertPassIcon.style.color = "red";
         alertPassIcon.style.display = "inline";
         document.getElementById("alertPass").className ="fas fa-exclamation-circle alertPassIcon"
-        submitButton.setAttribute("disabled",true);
+       
     }
 }
 
 // js code to check and confirm input field's password
 userPassword.addEventListener("input",()=>{
     let inputValue = userPassword.value.trim();// trim function
-    if(inputValue.length >= 8){
+    if(inputValue.length > 7){
         alertPass.innerText = "enter at least 8 characters";
         userConfirmPassword.removeAttribute("disabled");
     }else if ((document.getElementById("user_password").value.length==0)==(document.getElementById("confirm_password").value.length!=0)){ 
+        userConfirmPassword.removeAttribute("disabled");
+    }else if (document.getElementById("confirm_password").value.length >0){
         userConfirmPassword.removeAttribute("disabled");
     }else{
         userConfirmPassword.setAttribute("disabled",true);

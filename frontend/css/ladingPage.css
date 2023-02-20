@@ -1,0 +1,204 @@
+:root{
+  --icon:rgb(0, 132, 255);
+  --text:#FFF;
+  --text_hover:rgb(0, 217, 255);
+  --select_div:rgb(0, 132, 255);
+  --post:rgba(0, 0, 0, 0.116);
+  --post_text:rgb(202, 202, 202);
+}
+
+.container{
+  width: 600px;
+  height: 100;
+  margin: auto;
+  justify-items: center;
+  
+}
+.container  a{
+  color: var(--text);
+  text-decoration: none;
+
+}
+/*------------logo---------------*/
+.container .logo{
+  text-decoration: none;
+  padding: 20px 0 ;
+  font-size: 5.5rem;
+  background: transparent;
+  text-align: center;
+}
+.container .logo span{
+  padding-left: 10px;
+  color: var(--text);
+}
+.container .logo i{
+  
+  color: var(--icon);
+}
+/*------------end logo---------------*/
+/*------------main---------------*/
+.container .main{
+
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+/*------------end main---------------*/
+
+/*------------login---------------*/
+.container .login{
+  text-align: center;
+}
+/*------------end logo---------------*/
+/*------------register---------------*/
+.container .register{
+  text-align: center;
+}
+/*------------end register---------------*/
+/*-------------------button-------------------*/
+/* 5 */
+.custom-btn {
+  margin: auto;
+  width: 130px;
+  height: 40px;
+  margin-top: 10px;
+  padding: 10px 25px;
+  font-size: 1.1rem;
+  border: 2px solid white;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+
+.btn-5 {
+  background: transparent;
+  color: #fff;
+  line-height: 42px;
+  padding: 0;
+  border: none;
+}
+.btn-5:hover {
+  background: transparent;
+  color: var(--text_hover);
+}
+
+.btn-5:before,
+.btn-5:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: white;
+  transition:400ms ease all;
+}
+.btn-5:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+.btn-5:hover:before,
+.btn-5:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+  /*Under here is for moving background*/
+  body {
+    -webkit-animation: theme 21s linear infinite;
+            animation: theme 21s linear infinite;
+            font-family: 'Times New Roman', Times, serif;
+  }
+  body:after, body:before {
+    content: "";
+    display: block;
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    width: 100vmax;
+    height: 100vmax;
+    background: rgba(0, 0, 0, 0.05);
+    -webkit-animation: background 90s linear infinite;
+            animation: background 90s linear infinite;
+  }
+  body:after {
+    left: 15vw;
+  }
+  body:before {
+    right: 15vw;
+    -webkit-animation-delay: -30s;
+            animation-delay: -30s;
+    animation-direction: reverse;
+  }
+  
+  @-webkit-keyframes theme {
+      0% {
+          background: #151515;
+        }
+        16% {
+          background: #222323;
+        }
+        33% {
+          background: #4a4a4a;
+        }
+        50% {
+          background: #424242;
+        }
+        66% {
+          background: #353434;
+        }
+        83% {
+          background: #292828;
+        }
+        100% {
+          background: #151515;
+        }
+  }
+  
+  @keyframes theme {
+      0% {
+          background: #151515;
+        }
+        16% {
+          background: #222323;
+        }
+        33% {
+          background: #4a4a4a;
+        }
+        50% {
+          background: #424242;
+        }
+        66% {
+          background: #353434;
+        }
+        83% {
+          background: #292828;
+        }
+        100% {
+          background: #151515;
+        }
+  }
+  @-webkit-keyframes background {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes background {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }/*# sourceMappingURL=loginPage.css.map */

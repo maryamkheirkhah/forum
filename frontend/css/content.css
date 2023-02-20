@@ -1,0 +1,312 @@
+  /* Icon color rgb(0, 132, 255) */
+ :root{
+  --icon:rgb(0, 132, 255);
+  --text:#FFF;
+  --text_hover:rgb(0, 217, 255);
+  --select_div:rgb(0, 132, 255);
+  --post:rgba(0, 0, 0, 0.116);
+  --post_text:rgb(202, 202, 202);
+}
+body{
+  padding-top:140px ;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+
+
+  .Post_box{
+    background: #15151584;
+    color: #fff;
+  }
+  .comment_text{
+    margin: 0 0 0 5px;
+    color: var(--icon);
+  }
+  .comment_text:hover{
+    color: var(--text_hover);
+  }
+  .logout_button{
+    background: transparent;
+    color: var(--text);
+    border: 0;
+  }
+  .logout_button:hover{
+    color: var(--text_hover);
+  }
+  /*------------Nav bar-------------*/
+
+  .custom-radio-button__container input[type="radio"] {
+    display: none;
+  }
+  /*-like && dislike button-*/
+  .like-button{
+    margin: 0 0 0 5px;
+    color: var(--icon);
+    background: transparent;
+    border: 0;
+    outline: 0;
+  }
+  .like-button.active{
+    color: rgb(1, 169, 1);
+  }
+  .like-button:hover{
+    color: rgb(1, 169, 1);
+  }
+  .dislike-button{
+    margin: 0 0 0 5px;
+    color: var(--icon);
+    background: transparent;
+    border: 0;
+    outline:0;
+  }
+  .dislike-button.active{
+    color: red;
+  }
+  .dislike-button:hover{
+    color: red;
+  }
+ .Gone{
+  display: none;
+ }
+  /*-------------------button-------------------*/
+/* 5 */
+.custom-btn {
+
+  width: 130px;
+  height: 40px;
+  margin-top: 10px;
+  padding: 10px 25px;
+  font-size: 1.1rem;
+  border: 2px solid white;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  
+}
+
+
+.btn-5 {
+  background: transparent;
+  color: #fff;
+  line-height: 42px;
+  padding: 0;
+  border: none;
+}
+.btn-5:hover {
+  background: transparent;
+  color: var(--text_hover);
+}
+.btn-5:before,
+.btn-5:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: white;
+  transition:400ms ease all;
+}
+.btn-5:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+.btn-5:hover:before,
+.btn-5:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+
+ /*Delete all uderline from a tag*/
+ a{
+  text-decoration: none
+}
+/*Delete all balls from li tag*/
+li{
+  list-style: none;
+}
+header{
+  position: fixed;
+  width: 100%;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgb(19,19,19);
+background: linear-gradient(0deg, rgba(19,19,19,0.9166416266025641) 0%, rgba(0,0,0,1) 88%);
+  padding: 28px ;
+  transition: all .50s ease;
+}
+.logo{
+  display: flex;
+  margin-left: 10%;
+  align-items: center;
+  color: var(--icon);
+}
+.logo i{
+  font-size: 2.7rem;
+  margin: 10px 10px;
+}
+.logo span{
+  color: var(--text);
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+.search_bar{
+  margin-left: 40px;
+  width: 100%;
+}
+.search_bar input{
+  padding-left:10px ;
+  color: white;
+  font-size: 1.4rem;
+  width: 80%;
+  border-radius: 10px 0 0 10px;
+  margin-top: 0;
+  background: transparent;
+  border: none;
+}
+
+.search_bar button{
+  color:var(--icon);
+  font-size: 1.4rem;
+  border-radius:0 10px 10px 0;
+  background: transparent;
+  border: none;
+}
+.search_bar button:hover{
+  color: var(--text_hover) ;
+}
+
+.main{
+  display: flex;
+  align-items: center;
+}
+.main a{
+  margin-right: 25px;
+  margin-left: 10px;
+  color: var(--text);
+  font-size: 1.1rem;
+  font-weight: 500;
+  
+  transition: all .50s ease;
+}
+
+
+header i{
+  color: var(--icon);
+  font-size: 28px;
+  margin-right: 7px;
+}
+.main a:hover{
+  color: var(--text_hover);
+}
+
+#menu-icon{
+  font-size: 35px;
+  color: var(--icon);
+  cursor: pointer;
+  z-index: 10001;
+}
+
+
+
+/*------------ End Navbar-------------*/
+  /*Under here is for moving background*/
+  body {
+    -webkit-animation: theme 21s linear infinite;
+            animation: theme 21s linear infinite;
+  }
+  body:after, body:before {
+    content: "";
+    display: block;
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    width: 100vmax;
+    height: 100vmax;
+    background: rgba(0, 0, 0, 0.05);
+    -webkit-animation: background 90s linear infinite;
+            animation: background 90s linear infinite;
+  }
+  body:after {
+    left: 15vw;
+  }
+  body:before {
+    right: 15vw;
+    -webkit-animation-delay: -30s;
+            animation-delay: -30s;
+    animation-direction: reverse;
+  }
+  
+  @-webkit-keyframes theme {
+      0% {
+          background: #151515;
+        }
+        16% {
+          background: #222323;
+        }
+        33% {
+          background: #4a4a4a;
+        }
+        50% {
+          background: #424242;
+        }
+        66% {
+          background: #353434;
+        }
+        83% {
+          background: #292828;
+        }
+        100% {
+          background: #151515;
+        }
+  }
+  
+  @keyframes theme {
+      0% {
+          background: #151515;
+        }
+        16% {
+          background: #222323;
+        }
+        33% {
+          background: #4a4a4a;
+        }
+        50% {
+          background: #424242;
+        }
+        66% {
+          background: #353434;
+        }
+        83% {
+          background: #292828;
+        }
+        100% {
+          background: #151515;
+        }
+  }
+  @-webkit-keyframes background {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes background {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }/*# sourceMappingURL=loginPage.css.map */

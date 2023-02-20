@@ -1,52 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="/frontend/css/post.css">
+	<link rel="stylesheet" href="/frontend/css/postPage.css">
 	<link rel="stylesheet" href="/frontend/css/all.min.css">
 	<title>Post page</title>
 </head>
+
 <body>
-	<!--navebar-->
-	<header >
-		<a href="#"class="logo"><i class="fa-solid fa-laptop-code logo_icon"></i><span>grit:forum</span></a>
-		<div class="search_bar">
-			<form action="">
-				<input type="text" placeholder="Search.." name="search" ><button class="search_button" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-			</form>
-		</div>
-	
-		<div class="main">
-            <div class="user_link" style="padding-right: 40px;"><a href=""><i class="fa-solid fa-circle-user" style="display: inline;"></i><span>{{.username}}</span></a></div>
-			<div class="menu" id="menu-icon"><i class="fa-solid fa-bars"></i></div>
+	 <!-- Reset post Method -->
+	 <script>
+		if ( window.history.replaceState ) {
+			window.history.replaceState( null, null, window.location.href );
+		}
+	</script>
+	<!--navebar -->
+
+	<header>
+		<a href="/main" class="logo"><i class="fa-solid fa-laptop-code logo_icon"></i><span>grit:forum</span></a>
+		<div class="main" id="USER">
+			<div class="user_link" style="padding-right: 40px;"><a href="/profile?Username={{.Username}}"><i class="fa-solid fa-circle-user"
+						style="display: inline;"></i><span id="UserName">{{.Username}}</span></a></div>
+						<form action="" method="POST">
+							<div class="user_link" style="padding-right: 40px;">
+							  <button type="submit" name="Logout" class="logout_button" value="Logout">
+								<i class="fa-solid fa-arrow-right-to-bracket" style="display: inline;"></i>
+								<span>Logout</span>
+							  </button>
+							</div>
+						  </form>
 		</div>
 	</header>
-	
-		<!--postbox-->
-    <div class="container">
-        <div class="write-post-container">
-            <form action="" method="post">
-                <div class="user-profile">
-                    <i class="fa-regular fa-circle-user"></i><span>{{.username}}</span>
-                </div>
-                <div class="post-input-container">
-                    <label for="title">Title</label>
-                    <input type="text"class="title" id="title">
-                    <label for="topic">Topic</label>
-                    <input type="text"class="topic" id="topic">
-                    <label for="Text">Text</label>
-                    <textarea name="" id="Text" cols="30" rows="5"class="user_input"></textarea>
-                    <button class="custom-btn btn-5"><span>Post</span></button>
-                </div> 
-            </form>
-            </div>
-	</div>
-</div>
 
+	<!--postbox-->
+	<div class="container">
+		<div class="write-post-container">
+			<form action="" method="post">
+				<div class="user-profile">
+					<i class="fa-regular fa-circle-user"></i><span>{{.Username}}</span>
+				</div>
+				<div class="post-input-container">
+					<label for="title">Title</label>
+					<!-- title value-->
+					<input name="title" type="text" class="title" id="title"
+						onkeypress="return handleEnter(this, event)">
+					<label>Topic</label>
+					<div>
+						<multi-input>
+							<!--this input is not for form-->
+							<input list="topic_list" class="multi_input" id="multi_input"
+								onkeypress="return handleEnter(this, event)">
+							<datalist id="topic_list">
+								<!--For loob for topic data
+								<option value=""></option>
+							-->
+								{{range .AllTopics}}
+								<option value="{{.}}"></option>
+								{{end}}
+							</datalist>
+						</multi-input>
+					</div>
+					<!-- topic value-->
+					<input name="values" id="values" style="display: none;"></input>
+					<label for="content">Text</label>
+					<!-- text value-->
+					<textarea name="content" id="content" cols="30" rows="5" class="user_input"></textarea>
+					<button class="custom-btn btn-5" id="send_post"><span>Post</span></button>
+				</div>
+			</form>
+		</div>
+	</div>
+	</div>
 
 	<script src="/frontend/js/post.js"></script>
-	
+
+	<script>
+
+		/***********************************************
+		* Disable "Enter" key in Form script- By Nurul Fadilah(nurul@REMOVETHISvolmedia.com)
+		* This notice must stay intact for use
+		* Visit http://www.dynamicdrive.com/ for full source code
+		***********************************************/
+
+		function handleEnter(field, event) {
+			var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+			if (keyCode == 13) {
+				var i;
+				for (i = 0; i < field.form.elements.length; i++)
+					if (field == field.form.elements[i])
+						break;
+				i = (i + 1) % field.form.elements.length;
+				field.form.elements[i].focus();
+				return false;
+			}
+			else
+				return true;
+		}
+
+	</script>
+	<script type="module">
+		import {alertMessage } from '/frontend/js/modulfile.js'
+		alertMessage({{.CookieMessage}})
+	  </script>
+
 </body>
+
 </html>
